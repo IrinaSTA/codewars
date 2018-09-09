@@ -10,25 +10,14 @@
 #row_sum_odd_numbers(2) = 8
 
 def row_sum_odd_numbers(n)
-  row_number = 1
-  row_length = 1
-  odd_number = 0
-  triangle = []
-  n.times do
-    row = []
-    until row.length == row_length do
-      if odd_number % 2 != 0
-        row << odd_number
-        odd_number += 1
-      else
-        odd_number += 1
-      end
-    end
-    triangle << row
-    row_number += 1
-    row_length += 1
+  row = []
+  num = n * (n - 1) + 1
+  row << num
+  until row.length == n do
+    num += 1
+    row << num if num % 2 != 0
   end
-  return triangle[n-1].inject("+")
+  return row.inject("+")
 end
 
 class Test
